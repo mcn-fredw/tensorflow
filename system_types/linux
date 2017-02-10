@@ -38,6 +38,7 @@ function set_CUDA_DNN_LIB_PATH() {
 
 # exports additional system specific variables for CUDA
 function export_cuda_environment() {
+    :
 }
 
 # OpenCL library path

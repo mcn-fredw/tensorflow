@@ -29,15 +29,16 @@ function set_CUDA_RT_LIB_PATH() {
     CUDA_RT_LIB_PATH="lib64/libcudart.so${1}"
 }
 
+# exports additional system specific variables for CUDA
+function export_cuda_environment() {
+    :
+}
+
 # sets CUDA_DNN_LIB_PATH and CUDA_DNN_LIB_ALT_PATH
 function set_CUDA_DNN_LIB_PATH() {
     CUDA_DNN_LIB_PATH="lib64/libcudnn.so${1}"
     CUDA_DNN_LIB_ALT_PATH="libcudnn.so${1}"
     CUDNN_PATH_FROM_LDCONFIG="$(ldconfig -p | sed -n 's/.*libcudnn.so .* => \(.*\)/\1/p')${1}"
-}
-
-# exports additional system specific variables for CUDA
-function export_cuda_environment() {
 }
 
 # OpenCL library path
