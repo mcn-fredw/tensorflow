@@ -1,0 +1,59 @@
+###
+#  windows system specific configuration
+#
+
+# system specific clean
+function bazel_clean() {
+}
+
+# options not supported on windows
+TF_NEED_GCP=0
+TF_NEED_HDFS=0
+TF_NEED_JEMALLOC=0
+TF_NEED_OPENCL=0
+
+# sed command to use jemalloc
+# leave empty is systemdoes not support jemalloc
+JEMALLOC_ON=""
+
+# location of curl headers
+# leave empty if don't need curl header path
+CURL_HEADER_PATH=""
+
+# flags need GCC path
+# leave empty if not needed
+WANT_GCC_HOST_COMPILER_PATH=""
+
+# sets default CUDA path
+function set_default_cuda_path() {
+    if [ -z "$1" ]; then
+    default_cuda_path="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0"
+    else
+    default_cuda_path="$(cygpath -m "$1")"
+    fi
+}
+
+# sets CUDA_RT_LIB_PATH
+function set_CUDA_RT_LIB_PATH() {
+    CUDA_RT_LIB_PATH="lib/x64/cudart.lib"
+}
+
+# sets CUDA_DNN_LIB_PATH and CUDA_DNN_LIB_ALT_PATH
+function set_CUDA_DNN_LIB_PATH() {
+    CUDA_DNN_LIB_PATH="lib/x64/cudnn.lib"
+    CUDA_DNN_LIB_ALT_PATH="lib/x64/cudnn.lib"
+}
+
+# exports additional system specific variables for CUDA
+function export_cuda_environment() {
+    # The following three variables are needed for MSVC toolchain configuration in Bazel
+    export CUDA_PATH="$1"
+    export CUDA_COMPUTE_CAPABILITIES="$2"
+    export NO_WHOLE_ARCHIVE_OPTION=1
+
+    # Set GCC_HOST_COMPILER_PATH to keep cuda_configure.bzl happy
+    export GCC_HOST_COMPILER_PATH="/usr/bin/dummy_compiler"
+}
+
+# OpenCL library path
+SYCL_RT_LIB_PATH=""

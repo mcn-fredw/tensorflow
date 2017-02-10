@@ -1,0 +1,44 @@
+###
+# macos system specific configuration
+#
+bazel_clean="bazel clean --expunge"
+
+# system specific clean
+function bazel_clean() {
+    bazel clean --expunge
+}
+
+# sed command to use jemalloc
+# leave empty is systemdoes not support jemalloc
+JEMALLOC_ON=""
+
+# location of curl headers
+# leave empty if don't need curl header path
+CURL_HEADER_PATH=""
+
+# flags need GCC path
+# leave empty if not needed
+WANT_GCC_HOST_COMPILER_PATH="Yes"
+
+# sets default CUDA path
+function set_default_cuda_path() {
+    default_cuda_path=/usr/local/cuda
+}
+
+# sets CUDA_RT_LIB_PATH
+function set_CUDA_RT_LIB_PATH() {
+    CUDA_RT_LIB_PATH="lib/libcudart${1}.dylib"
+}
+
+# sets CUDA_DNN_LIB_PATH and CUDA_DNN_LIB_ALT_PATH
+function set_CUDA_DNN_LIB_PATH() {
+    CUDA_DNN_LIB_PATH="lib/libcudnn${1}.dylib"
+    CUDA_DNN_LIB_ALT_PATH="libcudnn${1}.dylib"
+}
+
+# exports additional system specific variables for CUDA
+function export_cuda_environment() {
+}
+
+# OpenCL library path
+SYCL_RT_LIB_PATH=""
