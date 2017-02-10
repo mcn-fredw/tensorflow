@@ -2,6 +2,10 @@
 # FreeBSD system specific configuration
 #
 
+export GCC_HOST_COMPILER_PATH=/usr/local/bin/gcc5
+export HOST_CXX_COMPILER=/usr/local/bin/gcc5
+export HOST_C_COMPILER=/usr/local/bin/gcc5
+
 # system specific clean
 function bazel_clean() {
     bazel clean --expunge
