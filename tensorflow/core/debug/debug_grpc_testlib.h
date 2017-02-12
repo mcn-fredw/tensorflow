@@ -16,6 +16,15 @@ limitations under the License.
 #ifndef TENSORFLOW_DEBUG_GRPC_TESTLIB_H_
 #define TENSORFLOW_DEBUG_GRPC_TESTLIB_H_
 
+#if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
+extern "C"
+{
+#include <sys/param.h>
+#undef major
+#undef minor
+}
+#endif
+
 #include "grpc++/grpc++.h"
 #include "tensorflow/core/debug/debug_service.grpc.pb.h"
 #include "tensorflow/core/framework/tensor.h"

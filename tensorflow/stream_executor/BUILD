@@ -25,7 +25,6 @@ cc_library(
         "platform/**/*.h",
     ]),
     linkopts = [
-        "-ldl",
     ],
     visibility = ["//visibility:public"],
     deps = [
@@ -46,7 +45,6 @@ cc_library(
         ),
     ),
     linkopts = [
-        "-ldl",
     ],
     visibility = ["//visibility:public"],
     deps = [

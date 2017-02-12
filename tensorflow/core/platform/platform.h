@@ -51,6 +51,15 @@ limitations under the License.
 // If no platform specified, use:
 #define PLATFORM_POSIX
 
+#if defined(__unix__)
+extern "C"
+{
+    #include <sys/param.h>
+    #undef major
+    #undef minor
+}
+#endif
+
 #endif
 #endif
 

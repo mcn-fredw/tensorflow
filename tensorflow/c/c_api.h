@@ -19,6 +19,17 @@ limitations under the License.
 #include <stddef.h>
 #include <stdint.h>
 
+#if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
+#ifdef __cplusplus
+extern "C"
+{
+    #include <sys/param.h>
+    #undef major
+    #undef minor
+}
+#endif
+#endif
+
 // --------------------------------------------------------------------------
 // C API for TensorFlow.
 //

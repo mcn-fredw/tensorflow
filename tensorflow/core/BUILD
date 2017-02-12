@@ -1186,7 +1186,7 @@ cc_library(
     ],
     copts = tf_copts(),
     defines = tf_additional_lib_defines(),
-    linkopts = ["-ldl"],
+    linkopts = [],
     deps = tf_additional_lib_deps() + [
         ":lib_hash_crc32c_accelerate_internal",
         ":lib_proto_parsing",
@@ -1213,7 +1213,7 @@ cc_library(
     ],
     hdrs = ["lib/gif/gif_io.h"],
     copts = tf_copts(),
-    linkopts = ["-ldl"],
+    linkopts = [],
     deps = [
         ":lib",
         "//tensorflow/core/platform/default/build_config:gif",
@@ -1232,7 +1232,7 @@ cc_library(
         "lib/jpeg/jpeg_mem.h",
     ],
     copts = tf_copts(),
-    linkopts = ["-ldl"],
+    linkopts = [],
     deps = [
         ":lib",
         "//tensorflow/core/platform/default/build_config:jpeg",
@@ -1311,7 +1311,6 @@ tf_cuda_library(
     ],
     copts = tf_copts(),
     linkopts = [
-        "-ldl",
         "-lm",
     ],
     deps = [
